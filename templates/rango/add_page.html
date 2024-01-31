@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>Rango</title>
+    </head>
+    <body>
+    {% if category %}
+    <h1>Add a Page to {{ category.name }}</h1>
+    <a href="/rango/category/{{ category.slug }}/">Back to {{ category.name }}</a><br><br>
+    <form id="page_form" method="post" action="/rango/category/{{ category.slug }}/add_page/">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Page</button>
+    </form>
+    {% else %}
+    <strong>The specified category does not exist.</strong>
+    {% endif %}
+    
+    </body>
+</html>
